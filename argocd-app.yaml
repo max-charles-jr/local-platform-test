@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: "https://github.com/max-charles-jr/local-platform-test"
     targetRevision: HEAD # Tracks the latest commit (or change to a branch like 'main')
-    path: k8s/dev # The folder where Waypoint or GitHub Actions drops the manifests
+    path: manifests/dev # The folder where Waypoint or GitHub Actions drops the manifests
   destination:
     server: "https://kubernetes.default.svc" # Points to the local cluster ArgoCD lives on
     namespace: argo-dev # The target namespace for the application
