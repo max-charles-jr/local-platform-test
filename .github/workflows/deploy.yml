@@ -1,37 +1,24 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: web-service
-  namespace: local-dev
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: web-service
-  template:
-    metadata:
-      labels:
-        app: web-service
-    spec:
-      containers:
-      - name: web-service
-        image: local-registry/web-service:latest
-        ports:
-        - containerPort: 3000
-        env:
-        - name: NODE_ENV
-          value: "local-dev"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: web-service
-  namespace: local-dev
-spec:
-  selector:
-    app: web-service
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
-  type: ClusterIP
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows you to manually trigger this from GitHub
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate Kubernetes Manifests
+        run: |
+          echo "Validating manifests..."
+          # You can add linting or validation tools here
+
+      - name: Simulate Deployment Trigger
+        run: |
+          echo "Simulating pipeline execution..."
+          echo "This is where GitHub Actions kicks off Waypoint or updates Git for ArgoCD."
