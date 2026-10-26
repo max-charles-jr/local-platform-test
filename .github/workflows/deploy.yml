@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop
 
 # Grant permissions to write packages to GHCR and commit changes back to the repository
 permissions:
