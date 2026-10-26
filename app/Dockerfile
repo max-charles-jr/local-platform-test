@@ -1,14 +1,18 @@
-# app/Dockerfile
-FROM node:18-alpine
+FROM node:20-alpine
 
+# Set the working directory inside the container
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# Copy package files from the host's app directory into the container
+# Since context is ".", the files are at ./app/package.json
+COPY app/package.json app/package-lock.json* ./
 
-RUN npm install --dev
+# Install dependencies (ignoring scripts if you have tricky local NODE_OPTIONS)
+RUN npm install --dev --ignore-scripts
 
-COPY . .
+# Copy the rest of your application code
+COPY app/ .
 
+# Expose port and start the application
 EXPOSE 3000
-
-CMD ["node", "server.js"]
+CMD ["npm", "run", "dev"]
