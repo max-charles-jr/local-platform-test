@@ -18,6 +18,20 @@ spec:
           # The GitHub Action script will automatically overwrite everything after ghcr.io/
           image: ghcr.io/max-charles-jr/local-platform-test:632c4583b84b1fa5cc819610b304ced29cd747c4
           ports:
-            - containerPort: 80
+            - containerPort: 3000
       imagePullSecrets:
         - name: ghcr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-dev
+  namespace: app-dev
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
