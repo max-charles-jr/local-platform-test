@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-service
-  namespace: local-dev
+  namespace: app-dev
 spec:
   replicas: 1
   selector:
@@ -26,7 +26,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-service
-  namespace: local-dev
+  namespace: app-dev
 spec:
   selector:
     app: web-service
