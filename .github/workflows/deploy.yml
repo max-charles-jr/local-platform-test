@@ -3,7 +3,7 @@ name: Build and Push to GHCR
 on:
   push:
     branches:
-      - main
+      #- main
       - develop
 
 # Grant permissions to write packages to GHCR and commit changes back to the repository
@@ -58,4 +58,4 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@://github.com"
           git add manifests/dev/deployment.yaml
           git commit -m "chore: update image tag to ${{ github.sha }} [skip ci]" || echo "No changes to commit"
-          git push origin main
+          git push origin develop
