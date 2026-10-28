@@ -16,7 +16,7 @@ spec:
       containers:
         - name: application
           # The GitHub Action script will automatically overwrite everything after ghcr.io/
-          image: ghcr.io/max-charles-jr/local-platform-test:632c4583b84b1fa5cc819610b304ced29cd747c4
+          image: ghcr.io/max-charles-jr/local-platform-test:03dac6522e3dbf19c965ed5af28f360b1c7211c4
           ports:
             - containerPort: 3000
       imagePullSecrets:
